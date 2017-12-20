@@ -9,21 +9,40 @@ export interface IPersona {
     sexo: 'Femenino' | 'Masculino';
   }
 
-export class Persona implements IPersona {
-nombres: string;
-apellidos: string;
-fechaNacimiento: Date = new Date ();
-pais: string;
-email: string;
-Masculino?: string;
-Femenino?: string;
-sexo: 'Femenino' | 'Masculino';
-yearnac: number = this.fechaNacimiento.getFullYear();
-monthnac: number = this.fechaNacimiento.getMonth();
+export abstract class NewPerson implements IPersona {
+    nombres: string;
+    apellidos: string;
+    fechaNacimiento: Date = new Date ();
+    pais ?: string;
+    email ?: string;
+    Masculino ?: string;
+    Femenino ?: string;
+    sexo: 'Femenino' | 'Masculino';
 
+constructor (nombres: string,
+  apellidos: string,
+  fechaNacimiento: Date = new Date (),
+  sexo: 'Femenino' | 'Masculino',
+  pais ?: string,
+  email ?: string) {
+    }
+public abstract newPerson(): void;
 
-constructor (value?: IPersona) {
+    }
+
+export class Persona extends NewPerson {
+
+constructor (nombres: string,
+  apellidos: string,
+  fechaNacimiento: Date = new Date (),
+  sexo: 'Femenino' | 'Masculino',
+  pais ?: string,
+  email ?: string,
+  ) {
+super(nombres, apellidos, fechaNacimiento, sexo, pais, email );
+}
+public newPerson() {
 
 }
-
 }
+

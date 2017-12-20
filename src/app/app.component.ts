@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IPersona, Persona } from './app';
 
 import { Prueba1Component } from './prueba1/prueba1.component';
+import { AbstractClassPart } from '@angular/compiler/src/output/output_ast';
 
 @Component({
 selector: 'app-root',
@@ -35,7 +36,7 @@ this.componente = 'Componente Padre';
 }
 
 ngOnInit() {
-this.datosDTO = new Persona;
+this.datosDTO = new Persona('Pedro', 'Perez', new Date('1976-08-14'), 'Masculino');
 this.datosDTO.nombres = 'Nairobi';
 this.datosDTO.apellidos = 'Manrique';
 this.datosDTO.fechaNacimiento = new Date('1978-05-19');
@@ -45,7 +46,7 @@ this.calculateAge(this.datosDTO.fechaNacimiento);
 this.edades();
 console.log(this.datosDTO.fechaNacimiento);
 console.log(this.age, 'soy age');
-console.log(this.datosDTO);
+console.log('Esta es datosDTO', this.datosDTO);
 }
 
 edades() {
@@ -72,3 +73,4 @@ setNewSexo(Name: 'Femenino' | 'Masculino') {
     console.log(this.curSexo);
   }
  }
+
