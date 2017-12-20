@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+body, html {
+	font-family: 'Montserrat', sans-serif;
+	display: flex;
+	background-color: #f0f0f0;
+	vertical-align: center;
+	padding: 1rem;
+
+}
+
+h1 {
+	
+	font-size: 2rem;
+	text-align: center;
+}
