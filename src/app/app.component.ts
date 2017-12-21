@@ -106,7 +106,7 @@ setNewSexo(Name: 'Femenino' | 'Masculino') {
     console.log(this.curSexo);
   }
 
-newPerson(this.datosDTO) {
+newPerson(datosDTO) {
 this.nperson.push(this.datosDTO);
 this.datosDTO = new Persona('', '', new Date(''), 'Masculino', '', '');
 this.edad = 0;
