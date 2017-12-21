@@ -12,12 +12,11 @@ public title: string;
 hoy: Date = new Date();
 mhoy: number = this.hoy.getMonth();
 @Input() datos: Array<string>;
+// @Input() personas: Array<string>;
 @Input() edad: number;
 @Output() fechanac = new EventEmitter<Date>();
 
   constructor() {
      this.title = 'Componente Hijo';
   }
-
-
 }

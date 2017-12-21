@@ -3,22 +3,25 @@
 	<div class="col-lg-6">
 		<h4>{{ componente }}</h4>
 		<div style="text-align:left">
-			<form class="form-control">
+			<form #formPersona="ngForm" (submit)= "newPerson()" class="form-control" id="form-persona">
 				<h5 align="center">Formulario Registro de datos:</h5>
-				<label for="text-nombre" class="col-8 col-form-label form-check-label">Nombres: </label>
+				<label for="text-nombre" class="col-8 col-form-label form-check-label">
+				Nombres:
+				<span *ngIf="!nombres.valid && nombres.touched" class="label label-danger">El nombre es obligatorio</span>
+				 </label>
 				<div class="input-group mb-2 mr-sm-2 mb-sm-0 has-warning">
 					<div class="input-group-addon"></div>
-					<input type="text" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0 form-control-warning" id="nombres" name=nombres [(ngModel)]="datosDTO.nombres"  required > 
+					<input type="text" #nombres="ngModel" class="form-control form-control-sm mb-2 mr-sm-2 mb-sm-0 form-control-warning" id="nombres" name=nombres [(ngModel)]="datosDTO.nombres"  required > 
 				</div>
 				<label for="text-apellido" class="col-8 col-form-label form-check-label">Apellidos: </label>
 				<div class="input-group mb-2 mr-sm-2 mb-sm-0">
 					<div class="input-group-addon"></div>
-					<input type="text" id=apellidos name=apellidos placeholder="Ingrese Apellidos ..." class="form-control form-control-sm" [(ngModel)]="datosDTO.apellidos" required/>
+					<input type="text" #apellid="ngModel" id=apellid name=apellid placeholder="Ingrese Apellidos ..." class="form-control form-control-sm" [(ngModel)]="datosDTO.apellidos" required/>
 				</div>
 				<label for="date-birthday" class="col-8 col-form-label form-check-label" >Fecha de Nacimiento: </label> 
 				<div class="input-group mb-2 mr-sm-2 mb-sm-0">
 					<div class="input-group-addon"></div>
-					<input type="date" id=fechaNacimiento name=fechaNacimiento class="form-control form-control-sm" 
+					<input type="date" #fechaNac="ngModel" id=fechaNac name=fechaNac class="form-control form-control-sm" 
 					[(ngModel)]="datosDTO.fechaNacimiento" (ngModelChange)="calculateAge($event)"  required />
 				</div>
 				<label for="text-sexo" class="col-8 col-form-label form-check-label">Genero: </label>
@@ -33,34 +36,54 @@
 				<label for="text-pais" class="col-8 col-form-label form-check-label">País: </label>
 				<div class="input-group mb-2 mr-sm-2 mb-sm-0">
 					<div class="input-group-addon"></div>
-					<input type="text" id=pais name=pais placeholder="Ingrese pais ..." class="form-control form-control-sm" [(ngModel)]="datosDTO.pais" required/>
+					<input type="text" #country="ngModel" id=country name=country placeholder="Ingrese pais ..." class="form-control form-control-sm" [(ngModel)]="datosDTO.pais" required/>
 				</div>
 				<label for="text-email" class="col-8 col-form-label form-check-label">Email: </label>
 				<div class="input-group mb-2 mr-sm-2 mb-sm-0">
 					<div class="input-group-addon input-group-sm">@</div>
-					<input type="email" id=email name=email placeholder="ejercicio@example.com" class="form-control form-control-sm" [(ngModel)]="datosDTO.email" required/>
+					<input type="email" #correo="ngModel" id=correo name=correo placeholder="ejercicio@example.com" class="form-control form-control-sm" [(ngModel)]="datosDTO.email" required/>
 				</div>
 				<label for="text-edad" class="col-8 col-form-label form-check-label">Edad: </label>
 				<div class="input-group mb-2 mr-sm-2 mb-sm-0">
 					<div class="input-group-addon"></div>
-					<input type="text" id=edad name=edad class="form-control form-control-sm" [(ngModel)]="edad" disabled/>
+					<input type="text" #age="ngModel" id=age name=age class="form-control form-control-sm" [(ngModel)]="edad" disabled/>
+				</div>
+				<br>
+				<div style="text-align:center"  >
+				  <button type="submit" class="btn btn-primary" >Nueva Persona</button>
 				</div>
 			</form>
-
 		</div>
 	</div>
 	<div class="col-lg-6">
 
 		<div style="text-align:center">
-			<app-prueba1 
-			[datos] = "datosDTO" 
+		<app-prueba1 
+			[datos] = "datosDTO"
 			[edad] = "edad"
 			(fechanac) ="fechaOutput($event)"> 
 		</app-prueba1>
-	</div>
+		</div>
+		<div *ngFor= "let datosDTO of nperson; let i = index">
+			<ul>
+			<li *ngIf="i > 0" > 
+				<strong >Datos Personas: {{i}}</strong>
+				<ul>
+				<li>{{datosDTO.nombres}}</li>
+				<li>{{datosDTO.apellidos}}</li>
+				<li>{{datosDTO.fechaNacimiento}}</li>
+				<li>{{datosDTO.sexo}}</li>
+				<li>{{datosDTO.pais}}</li>
+				<li>{{datosDTO.email}}</li>	
+				<li>{{datosDTO.edad}}</li>
+				</ul>
+			</li>
+		</ul>
+ 
+		</div>
 
 </div>
-</div>
+
 
 
 
