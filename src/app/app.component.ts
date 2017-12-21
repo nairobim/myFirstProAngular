@@ -124,6 +124,4 @@ if (hora_a.getMinutes() <= 9) {
 }
 console.log(this.hora);
 }
-
-
 }
