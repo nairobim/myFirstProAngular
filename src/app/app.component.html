@@ -1,4 +1,4 @@
-<div class="row" style="text-align:center">
+<div class="row" style="text-align:center" [class.fondoAzul]="cambiar_estilo == true">
 	<h1><strong>Prácticas del Curso de Angular Nairobi Manrique!</strong></h1>
 	<div class="col-lg-6">
 		<h4>{{ componente }}</h4>
@@ -57,31 +57,32 @@
 	</div>
 	<div class="col-lg-6">
 
-		<div style="text-align:center">
+		<div style="text-align:center" >
 		<app-prueba1 
 			[datos] = "datosDTO"
 			[edad] = "edad"
 			(fechanac) ="fechaOutput($event)"> 
 		</app-prueba1>
 		</div>
-		<div *ngFor= "let datosDTO of nperson; let i = index">
+		<div *ngFor= "let datosDTO of nperson; let i = index" >
 			<ul>
 			<li *ngIf="i > 0" > 
 				<strong >Datos Personas: {{i}}</strong>
 				<ul>
-				<li>{{datosDTO.nombres}}</li>
-				<li>{{datosDTO.apellidos}}</li>
-				<li>{{datosDTO.fechaNacimiento}}</li>
-				<li>{{datosDTO.sexo}}</li>
-				<li>{{datosDTO.pais}}</li>
-				<li>{{datosDTO.email}}</li>	
-				<li>{{datosDTO.edad}}</li>
+				<li>{{datosDTO.nombres}}, {{datosDTO.apellidos}}, {{datosDTO.fechaNacimiento | date}}, 
+					{{datosDTO.sexo}}, {{datosDTO.pais}}, {{datosDTO.email}}, {{datosDTO.edad}} </li>
 				</ul>
 			</li>
 		</ul>
  
 		</div>
-
+			<div >
+			<strong >Hora Sistema: {{ hora }} : {{ minu }}</strong>
+			<br>
+			<span *ngFor= "let myHour of horas; let i = index;"> 
+			   {{ hora + (i + 1) }}:{{ minu }} ,  
+			</span>
+			</div>
 </div>
 
 
